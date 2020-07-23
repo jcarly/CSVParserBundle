@@ -1,0 +1,6 @@
+timezone: Europe/Paris
+
+crons:
+    update_repo:
+        spec: 0 7-19 * * *
+        cmd: croncape bin/console CSVParser:parse
