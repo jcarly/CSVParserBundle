@@ -30,13 +30,10 @@ class Parser {
 
     private function parseValue($key, $value)
     {
-
-        //$dom = new DOMDocument();
-
         switch($key)
         {
             case "created_at" :
-                $value = date("l d-M-Y H:i:s e", strtotime($value));
+                $value = date("l, d-M-Y H:i:s e", strtotime($value));
                 break;
             case "price" :
                 $value = number_format ( $value, 2, "," , " ");
@@ -48,7 +45,6 @@ class Parser {
                 $value = (new \Html2Text\Html2Text(str_replace(array("\r\n","\r","\n","\\r","\\n","\\r\\n"),"<br/>", $value)))->getText();
                 break;
             default:
-                //$value = (new \Html2Text\Html2Text(preg_replace("/\r\n|\r|\n/", '<br/>', $value)))->getText();
                 break;
         }
         return $value;
